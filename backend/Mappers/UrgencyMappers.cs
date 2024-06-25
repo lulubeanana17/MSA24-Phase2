@@ -18,5 +18,13 @@ namespace backend.Mappers
                 Title = urgencyModel.Title
             };
         }
+
+        public static Urgency ToUrgencyFromUrgencyDto(this CreateUrgencyDto urgencyDto)
+        {
+            return new Urgency
+            {
+                Title = urgencyDto.Title
+            };
+        }
     }
 }
