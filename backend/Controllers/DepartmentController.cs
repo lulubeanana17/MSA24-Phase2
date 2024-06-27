@@ -6,6 +6,7 @@ using backend.Data;
 using backend.Dtos.Department;
 using backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -17,23 +18,24 @@ namespace backend.Controllers
         //firewall
         public DepartmentController(ApplicationDBContext context)
         {
-            //context = data portal
+            //context is data portal
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var departments = _context.Departments.ToList()
-            .Select(s => s.ToDepartmentDto());
+            var departments = await _context.Departments.ToListAsync();
+
+            var departmentDto = departments.Select(s => s.ToDepartmentDto());
 
             return Ok(departments);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var department = _context.Departments.Find(id);
+            var department = await _context.Departments.FindAsync(id);
 
             if(department == null)
             {
@@ -44,19 +46,19 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateDepartmentDto departmentDto)
+        public async Task<IActionResult> Create([FromBody] CreateDepartmentDto departmentDto)
         {
             var departmentModel = departmentDto.ToDepartmentFromDepartmentDto();
-            _context.Departments.Add(departmentModel);
-            _context.SaveChanges();
+            await _context.Departments.AddAsync(departmentModel);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = departmentModel.Id }, departmentModel.ToDepartmentDto());
         }
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] UpdateDepartmentDto departmentDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDepartmentDto departmentDto)
         {
-            var departmentModel = _context.Departments.FirstOrDefault(x => x.Id == id);
+            var departmentModel = await _context.Departments.FirstOrDefaultAsync(x => x.Id == id);
 
             if(departmentModel == null)
             {
@@ -65,16 +67,16 @@ namespace backend.Controllers
 
             departmentModel.Title = departmentDto.Title;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(departmentModel.ToDepartmentDto());
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var departmentModel = _context.Departments.FirstOrDefault(x => x.Id == id);
+            var departmentModel = await _context.Departments.FirstOrDefaultAsync(x => x.Id == id);
 
             if(departmentModel == null)
             {
@@ -83,7 +85,7 @@ namespace backend.Controllers
 
             _context.Departments.Remove(departmentModel);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

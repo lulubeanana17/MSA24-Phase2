@@ -6,6 +6,7 @@ using backend.Data;
 using backend.Dtos.Urgency;
 using backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -20,18 +21,19 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var urgencies = _context.Urgencies.ToList()
-            .Select(s => s.ToUrgencyDto());
+            var urgencies = await _context.Urgencies.ToListAsync();
+
+            var urgencyDto = urgencies.Select(s => s.ToUrgencyDto());
             
             return Ok(urgencies);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var urgency = _context.Urgencies.Find(id);
+            var urgency = await _context.Urgencies.FindAsync(id);
 
             if(urgency == null)
             {
@@ -42,19 +44,19 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateUrgencyDto urgencyDto)
+        public async Task<IActionResult> Create([FromBody] CreateUrgencyDto urgencyDto)
         {
             var urgencyModel = urgencyDto.ToUrgencyFromUrgencyDto();
-            _context.Urgencies.Add(urgencyModel);
-            _context.SaveChanges();
+            await _context.Urgencies.AddAsync(urgencyModel);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = urgencyModel.Id }, urgencyModel.ToUrgencyDto());
         }
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] UpdateUrgencyDto urgencyDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateUrgencyDto urgencyDto)
         {
-            var urgencyModel = _context.Urgencies.FirstOrDefault(x => x.Id == id);
+            var urgencyModel = await _context.Urgencies.FirstOrDefaultAsync(x => x.Id == id);
 
             if(urgencyModel == null)
             {
@@ -63,16 +65,16 @@ namespace backend.Controllers
 
             urgencyModel.Title = urgencyDto.Title;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(urgencyModel.ToUrgencyDto());
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var urgencyModel = _context.Urgencies.FirstOrDefault(x => x.Id == id);
+            var urgencyModel = await _context.Urgencies.FirstOrDefaultAsync(x => x.Id == id);
 
             if(urgencyModel == null)
             {
@@ -81,7 +83,7 @@ namespace backend.Controllers
 
             _context.Urgencies.Remove(urgencyModel);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
