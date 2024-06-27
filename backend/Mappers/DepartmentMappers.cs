@@ -17,5 +17,13 @@ namespace backend.Mappers
                 Title = departmentModel.Title
             };
         }
+
+        public static Department ToDepartmentFromDepartmentDto(this CreateDepartmentDto departmentDto)
+        {
+            return new Department
+            {
+                Title = departmentDto.Title
+            };
+        }
     }
 }
