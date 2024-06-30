@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 });
 
 builder.Services.AddScoped<IUrgencyRepository, UrgencyRepository>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 var app = builder.Build();
 

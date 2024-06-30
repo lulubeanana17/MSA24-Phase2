@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Data;
 using backend.Dtos.Department;
+using backend.Interfaces;
 using backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,28 +15,28 @@ namespace backend.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly IDepartmentRepository _departmentRepo;
         //firewall
-        public DepartmentController(ApplicationDBContext context)
+        public DepartmentController(IDepartmentRepository departmentRepo)
         {
             //context is data portal
-            _context = context;
+            _departmentRepo = departmentRepo;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var departments = await _context.Departments.ToListAsync();
+            var departments = await _departmentRepo.GetAllAsync();
 
             var departmentDto = departments.Select(s => s.ToDepartmentDto());
 
-            return Ok(departments);
+            return Ok(departmentDto);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var department = await _context.Departments.FindAsync(id);
+            var department = await _departmentRepo.GetByIdAsync(id);
 
             if(department == null)
             {
@@ -49,8 +50,7 @@ namespace backend.Controllers
         public async Task<IActionResult> Create([FromBody] CreateDepartmentDto departmentDto)
         {
             var departmentModel = departmentDto.ToDepartmentFromDepartmentDto();
-            await _context.Departments.AddAsync(departmentModel);
-            await _context.SaveChangesAsync();
+            await _departmentRepo.CreateAsync(departmentModel);
             return CreatedAtAction(nameof(GetById), new { id = departmentModel.Id }, departmentModel.ToDepartmentDto());
         }
 
@@ -58,16 +58,12 @@ namespace backend.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDepartmentDto departmentDto)
         {
-            var departmentModel = await _context.Departments.FirstOrDefaultAsync(x => x.Id == id);
+            var departmentModel = await _departmentRepo.UpdateAsync(id, departmentDto);
 
             if(departmentModel == null)
             {
                 return NotFound();
             }
-
-            departmentModel.Title = departmentDto.Title;
-
-            await _context.SaveChangesAsync();
 
             return Ok(departmentModel.ToDepartmentDto());
         }
@@ -76,16 +72,12 @@ namespace backend.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var departmentModel = await _context.Departments.FirstOrDefaultAsync(x => x.Id == id);
+            var departmentModel = await _departmentRepo.DeleteAsync(id);
 
             if(departmentModel == null)
             {
                 return NotFound();
             }
-
-            _context.Departments.Remove(departmentModel);
-
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }

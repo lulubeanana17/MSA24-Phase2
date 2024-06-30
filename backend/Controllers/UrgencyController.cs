@@ -15,11 +15,9 @@ namespace backend.Controllers
     [ApiController]
     public class UrgencyController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
         private readonly IUrgencyRepository _urgencyRepo;
-        public UrgencyController(ApplicationDBContext context, IUrgencyRepository urgencyRepo)
+        public UrgencyController(IUrgencyRepository urgencyRepo)
         {
-            _context = context;
             _urgencyRepo = urgencyRepo;
         }
 
