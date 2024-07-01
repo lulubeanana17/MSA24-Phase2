@@ -63,6 +63,7 @@ namespace backend.Repository
             requestModel.Title = requestDto.Title;
             requestModel.Location = requestDto.Location;
             requestModel.Detail = requestDto.Detail;
+            requestModel.FinishTime = requestDto.FinishTime;
             requestModel.Action = requestDto.Action;
 
             await _context.SaveChangesAsync();

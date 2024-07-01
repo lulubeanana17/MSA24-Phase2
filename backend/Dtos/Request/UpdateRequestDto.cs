@@ -10,6 +10,7 @@ namespace backend.Dtos.Request
         public string Title { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
         public string Detail { get; set; } = string.Empty;
+        public DateTime FinishTime { get; set; }
         public string Action { get; set; } = string.Empty;
     }
 }
