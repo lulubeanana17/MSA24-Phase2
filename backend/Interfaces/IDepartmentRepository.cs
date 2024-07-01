@@ -15,5 +15,6 @@ namespace backend.Interfaces
         Task<Department> CreateAsync(Department departmentModel);
         Task<Department?> UpdateAsync(int id, UpdateDepartmentDto departmentDto);
         Task<Department?> DeleteAsync(int id);
+        Task<bool> DepartmentExists(int id);
     }
 }

@@ -24,5 +24,19 @@ namespace backend.Mappers
                 DepartmentId = requestModel.DepartmentId
             };
         }
+
+        public static Request ToRequestFromCreate(this CreateRequestDto requestDto, int UrgencyId, int DepartmentId)
+        {
+            return new Request
+            {
+                Title = requestDto.Title,
+                Location = requestDto.Location,
+                Detail = requestDto.Detail,
+                FinishTime = requestDto.FinishTime,
+                Action = requestDto.Action,
+                UrgencyId = UrgencyId,
+                DepartmentId = DepartmentId
+            };
+        }
     }
 }

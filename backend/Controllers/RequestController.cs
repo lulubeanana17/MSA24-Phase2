@@ -14,9 +14,13 @@ namespace backend.Controllers
     public class RequestController : ControllerBase
     {
         private readonly IRequestRepository _requestRepo;
-        public RequestController(IRequestRepository requestRepo)
+        private readonly IUrgencyRepository _urgencyRepo;
+        private readonly IDepartmentRepository _departmentRepo;
+        public RequestController(IRequestRepository requestRepo, IUrgencyRepository urgencyRepo, IDepartmentRepository departmentRepo)
         {
             _requestRepo = requestRepo;
+            _urgencyRepo = urgencyRepo;
+            _departmentRepo = departmentRepo;
         }
 
         [HttpGet]
@@ -40,6 +44,45 @@ namespace backend.Controllers
             }
 
             return Ok(request.ToRequestDto());
+        }
+
+        [HttpPost("{UrgencyId}/{DepartmentId}")]
+        public async Task<IActionResult> Create([FromRoute] int UrgencyId, [FromRoute] int DepartmentId, CreateRequestDto requestDto)
+        {
+            if(!await _urgencyRepo.UrgencyExists(UrgencyId)) return BadRequest("Urgency does not exist");
+            if(!await _departmentRepo.DepartmentExists(DepartmentId)) return BadRequest("Department does not exist");
+
+            var requestModel = requestDto.ToRequestFromCreate(UrgencyId, DepartmentId);
+            await _requestRepo.CreateAsync(requestModel);
+            return CreatedAtAction(nameof(GetById), new { id = requestModel}, requestModel.ToRequestDto());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRequestDto requestDto)
+        {
+            var requestModel = await _requestRepo.UpdateAsync(id, requestDto);
+
+            if(requestModel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(requestModel.ToRequestDto());
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var requestModel = await _requestRepo.DeleteAsync(id);
+
+            if(requestModel == null)
+            {
+                return NotFound("Request does not exist");
+            }
+
+            return NoContent();
         }
     }
 }

@@ -66,5 +66,10 @@ namespace backend.Repository
 
             return urgencyModel;
         }
+
+        public Task<bool> UrgencyExists(int id)
+        {
+            return _context.Urgencies.AnyAsync(s => s.Id == id);
+        }
     }
 }

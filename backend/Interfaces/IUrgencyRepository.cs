@@ -14,5 +14,6 @@ namespace backend.Interfaces
         Task<Urgency> CreateAsync(Urgency urgencyModel);
         Task<Urgency?> UpdateAsync(int id, UpdateUrgencyDto urgencyDto);
         Task<Urgency?> DeleteAsync(int id);
+        Task<bool> UrgencyExists(int id);
     }
 }
