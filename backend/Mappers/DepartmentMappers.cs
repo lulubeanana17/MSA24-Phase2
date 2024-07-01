@@ -14,7 +14,8 @@ namespace backend.Mappers
             return new DepartmentDto
             {
                 Id = departmentModel.Id,
-                Title = departmentModel.Title
+                Title = departmentModel.Title,
+                Requests = departmentModel.Requests.Select(c => c.ToRequestDto()).ToList()
             };
         }
 

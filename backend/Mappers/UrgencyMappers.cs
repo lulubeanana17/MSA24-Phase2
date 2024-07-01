@@ -15,7 +15,8 @@ namespace backend.Mappers
             return new UrgencyDto
             {
                 Id = urgencyModel.Id,
-                Title = urgencyModel.Title
+                Title = urgencyModel.Title,
+                Requests = urgencyModel.Requests.Select(c => c.ToRequestDto()).ToList()
             };
         }
 

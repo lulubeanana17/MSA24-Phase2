@@ -45,12 +45,12 @@ namespace backend.Repository
 
         public async Task<List<Department>> GetAllAsync()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.Departments.Include(c => c.Requests).ToListAsync();
         }
 
         public async Task<Department?> GetByIdAsync(int id)
         {
-            return await _context.Departments.FindAsync(id);
+            return await _context.Departments.Include(c => c.Requests).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<Department?> UpdateAsync(int id, UpdateDepartmentDto departmentDto)
