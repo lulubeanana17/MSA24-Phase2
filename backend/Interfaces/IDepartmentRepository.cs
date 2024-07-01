@@ -8,6 +8,7 @@ using backend.Models;
 namespace backend.Interfaces
 {
     public interface IDepartmentRepository
+    //list of components
     {
         Task<List<Department>> GetAllAsync();
         Task<Department?> GetByIdAsync(int id);

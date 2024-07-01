@@ -19,7 +19,7 @@ namespace backend.Controllers
         //firewall
         public DepartmentController(IDepartmentRepository departmentRepo)
         {
-            //context is data portal
+            //departmentRepo is component
             _departmentRepo = departmentRepo;
         }
 

@@ -16,6 +16,7 @@ namespace backend.Repository
         private readonly ApplicationDBContext _context;
         public DepartmentRepository(ApplicationDBContext context)
         {
+            //context is data portal
             _context = context;
         }
 
