@@ -12,10 +12,11 @@ namespace backend.Models
         public string Location { get; set; } = string.Empty;
         public string Detail { get; set; } = string.Empty;
         public DateTime StartTime { get; set; } = DateTime.Now;
-        public string Action { get; set; } = string.Empty;
         public int? UrgencyId { get; set; }
         public Urgency? Urgency { get; set; }
         public int? DepartmentId { get; set; }
         public Department? Department { get; set; }
+        public int? ActionId { get; set;}
+        public Action? Action { get; set;}
     }
 }
