@@ -18,7 +18,6 @@ namespace backend.Mappers
                 Location = requestModel.Location,
                 Detail = requestModel.Detail,
                 StartTime = requestModel.StartTime,
-                FinishTime = requestModel.FinishTime,
                 Action = requestModel.Action,
                 UrgencyId = requestModel.UrgencyId,
                 DepartmentId = requestModel.DepartmentId
@@ -32,7 +31,6 @@ namespace backend.Mappers
                 Title = requestDto.Title,
                 Location = requestDto.Location,
                 Detail = requestDto.Detail,
-                FinishTime = requestDto.FinishTime,
                 Action = requestDto.Action,
                 UrgencyId = UrgencyId,
                 DepartmentId = DepartmentId
