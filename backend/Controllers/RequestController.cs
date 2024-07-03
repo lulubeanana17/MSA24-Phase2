@@ -16,11 +16,13 @@ namespace backend.Controllers
         private readonly IRequestRepository _requestRepo;
         private readonly IUrgencyRepository _urgencyRepo;
         private readonly IDepartmentRepository _departmentRepo;
-        public RequestController(IRequestRepository requestRepo, IUrgencyRepository urgencyRepo, IDepartmentRepository departmentRepo)
+        private readonly IProgressRepository _progressRepo;
+        public RequestController(IRequestRepository requestRepo, IUrgencyRepository urgencyRepo, IDepartmentRepository departmentRepo, IProgressRepository progressRepo)
         {
             _requestRepo = requestRepo;
             _urgencyRepo = urgencyRepo;
             _departmentRepo = departmentRepo;
+            _progressRepo = progressRepo;
         }
 
         [HttpGet]
@@ -46,13 +48,14 @@ namespace backend.Controllers
             return Ok(request.ToRequestDto());
         }
 
-        [HttpPost("{UrgencyId}/{DepartmentId}")]
-        public async Task<IActionResult> Create([FromRoute] int UrgencyId, [FromRoute] int DepartmentId, CreateRequestDto requestDto)
+        [HttpPost("{UrgencyId}/{DepartmentId}/{ProgressId}")]
+        public async Task<IActionResult> Create([FromRoute] int UrgencyId, [FromRoute] int DepartmentId, [FromRoute] int ProgressId, CreateRequestDto requestDto)
         {
             if(!await _urgencyRepo.UrgencyExists(UrgencyId)) return BadRequest("Urgency does not exist");
             if(!await _departmentRepo.DepartmentExists(DepartmentId)) return BadRequest("Department does not exist");
+            if(!await _progressRepo.ProgressExists(ProgressId)) return BadRequest("Progress does not exist");
 
-            var requestModel = requestDto.ToRequestFromCreate(UrgencyId, DepartmentId);
+            var requestModel = requestDto.ToRequestFromCreate(UrgencyId, DepartmentId, ProgressId);
             await _requestRepo.CreateAsync(requestModel);
             return CreatedAtAction(nameof(GetById), new { id = requestModel}, requestModel.ToRequestDto());
         }

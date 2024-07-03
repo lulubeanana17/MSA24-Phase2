@@ -41,7 +41,7 @@ namespace backend.Repository
             return progressModel;
         }
 
-        public Task<bool> DepartmentExists(int id)
+        public Task<bool> ProgressExists(int id)
         {
             return _context.Progresses.AnyAsync(s => s.Id == id);
         }

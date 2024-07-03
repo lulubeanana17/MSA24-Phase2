@@ -14,6 +14,6 @@ namespace backend.Interfaces
         Task<Progress> CreateAsync(Progress progressModel);
         Task<Progress?> UpdateAsync(int id, UpdateProgressDto progressDto);
         Task<Progress?> DeleteAsync(int id);
-        Task<bool> DepartmentExists(int id);
+        Task<bool> ProgressExists(int id);
     }
 }

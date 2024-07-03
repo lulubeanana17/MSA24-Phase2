@@ -24,7 +24,7 @@ namespace backend.Mappers
             };
         }
 
-        public static Request ToRequestFromCreate(this CreateRequestDto requestDto, int UrgencyId, int DepartmentId)
+        public static Request ToRequestFromCreate(this CreateRequestDto requestDto, int UrgencyId, int DepartmentId, int ProgressId)
         {
             return new Request
             {
@@ -32,7 +32,8 @@ namespace backend.Mappers
                 Location = requestDto.Location,
                 Detail = requestDto.Detail,
                 UrgencyId = UrgencyId,
-                DepartmentId = DepartmentId
+                DepartmentId = DepartmentId,
+                ProgressId = ProgressId
             };
         }
     }
