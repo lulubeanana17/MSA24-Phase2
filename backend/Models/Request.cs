@@ -16,7 +16,7 @@ namespace backend.Models
         public Urgency? Urgency { get; set; }
         public int? DepartmentId { get; set; }
         public Department? Department { get; set; }
-        public int? ActionId { get; set;}
-        public Action? Action { get; set;}
+        public int? ProgressId { get; set;}
+        public Progress? Progress { get; set;}
     }
 }

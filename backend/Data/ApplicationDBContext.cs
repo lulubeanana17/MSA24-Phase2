@@ -16,5 +16,6 @@ namespace backend.Data
         public DbSet<Request> Requests { get; set; }
         public DbSet<Urgency> Urgencies { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Progress> Progresses { get; set; }
     }
 }

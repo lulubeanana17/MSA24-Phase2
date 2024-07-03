@@ -14,6 +14,6 @@ namespace backend.Dtos.Request
         public DateTime StartTime { get; set; } = DateTime.Now;
         public int? UrgencyId { get; set; }
         public int? DepartmentId { get; set; }
-        public int? ActionId { get; set; }
+        public int? ProgressId { get; set; }
     }
 }

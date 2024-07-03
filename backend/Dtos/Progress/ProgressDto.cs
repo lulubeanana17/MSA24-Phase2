@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Dtos.Request;
 
-namespace backend.Models
+namespace backend.Dtos.Progress
 {
-    public class Action
+    public class ProgressDto
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public List<Request> Requests { get; set; } = new List<Request>();
+        public List<RequestDto> Requests { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace backend.Mappers
                 StartTime = requestModel.StartTime,
                 UrgencyId = requestModel.UrgencyId,
                 DepartmentId = requestModel.DepartmentId,
-                ActionId = requestModel.ActionId
+                ProgressId = requestModel.ProgressId
             };
         }
 
