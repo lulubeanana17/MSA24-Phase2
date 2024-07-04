@@ -31,7 +31,7 @@ namespace backend.Controllers
             return Ok(urgencyDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var urgency = await _urgencyRepo.GetByIdAsync(id);
@@ -53,7 +53,7 @@ namespace backend.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateUrgencyDto urgencyDto)
         {
             var urgencyModel = await _urgencyRepo.UpdateAsync(id, urgencyDto);
@@ -67,7 +67,7 @@ namespace backend.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var urgencyModel = await _urgencyRepo.DeleteAsync(id);

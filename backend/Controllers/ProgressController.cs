@@ -30,7 +30,7 @@ namespace backend.Controllers
             return Ok(progressDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var progress = await _progressRepo.GetByIdAsync(id);
@@ -52,7 +52,7 @@ namespace backend.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProgressDto progressDto)
         {
             var progressModel = await _progressRepo.UpdateAsync(id, progressDto);
@@ -66,7 +66,7 @@ namespace backend.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var progressModel = await _progressRepo.DeleteAsync(id);

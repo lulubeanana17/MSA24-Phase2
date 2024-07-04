@@ -35,7 +35,7 @@ namespace backend.Controllers
             return Ok(requestDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var request = await _requestRepo.GetByIdAsync(id);
@@ -48,7 +48,7 @@ namespace backend.Controllers
             return Ok(request.ToRequestDto());
         }
 
-        [HttpPost("{UrgencyId}/{DepartmentId}/{ProgressId}")]
+        [HttpPost("{UrgencyId:int}/{DepartmentId:int}/{ProgressId:int}")]
         public async Task<IActionResult> Create([FromRoute] int UrgencyId, [FromRoute] int DepartmentId, [FromRoute] int ProgressId, CreateRequestDto requestDto)
         {
             if(!await _urgencyRepo.UrgencyExists(UrgencyId)) return BadRequest("Urgency does not exist");
@@ -61,7 +61,7 @@ namespace backend.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRequestDto requestDto)
         {
             var requestModel = await _requestRepo.UpdateAsync(id, requestDto);
@@ -75,7 +75,7 @@ namespace backend.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var requestModel = await _requestRepo.DeleteAsync(id);
