@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Data;
 using backend.Dtos.Request;
+using backend.Helpers;
 using backend.Interfaces;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
@@ -41,9 +42,31 @@ namespace backend.Repository
             return requestModel;
         }
 
-        public async Task<List<Request>> GetAllAsync()
+        public async Task<List<Request>> GetAllAsync(RequestQueryObject query)
         {
-            return await _context.Requests.ToListAsync();
+            var requests = _context.Requests.AsQueryable();
+
+            if(query.DepartmentId != null)
+            {
+                requests = requests.Where(s => s.DepartmentId == query.DepartmentId);
+            }
+
+            if(query.UrgencyId != null)
+            {
+                requests = requests.Where(s => s.UrgencyId == query.UrgencyId);
+            }
+
+            if(query.ProgressId != null)
+            {
+                requests = requests.Where(s => s.ProgressId == query.ProgressId);
+            }
+
+            if(!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                requests = query.IsDesending ? requests.OrderByDescending(s => s.StartTime) : requests.OrderBy(s => s.StartTime);
+            }
+
+            return await requests.ToListAsync();
         }
 
         public async Task<Request?> GetByIdAsync(int id)

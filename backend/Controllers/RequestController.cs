@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using backend.Dtos.Request;
+using backend.Helpers;
 using backend.Interfaces;
 using backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -26,11 +27,11 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] RequestQueryObject query)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState);
 
-            var requests = await _requestRepo.GetAllAsync();
+            var requests = await _requestRepo.GetAllAsync(query);
 
             var requestDto = requests.Select(s => s.ToRequestDto());
 
@@ -87,7 +88,7 @@ namespace backend.Controllers
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             if(!ModelState.IsValid) return BadRequest(ModelState);
-            
+
             var requestModel = await _requestRepo.DeleteAsync(id);
 
             if(requestModel == null)
