@@ -66,7 +66,9 @@ namespace backend.Repository
                 requests = query.IsDesending ? requests.OrderByDescending(s => s.StartTime) : requests.OrderBy(s => s.StartTime);
             }
 
-            return await requests.ToListAsync();
+            var skipNumber = (query.ContentNumber - 1) * query.ContentsSize;
+
+            return await requests.Skip(skipNumber).Take(query.ContentsSize).ToListAsync();
         }
 
         public async Task<Request?> GetByIdAsync(int id)

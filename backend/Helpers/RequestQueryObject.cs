@@ -12,5 +12,7 @@ namespace backend.Helpers
         public int? ProgressId { get; set; }
         public string? SortBy { get; set; } = null;
         public bool IsDesending { get; set; } = false;
+        public int ContentNumber { get; set; } = 1;
+        public int ContentsSize { get; set; } = 100;
     }
 }
