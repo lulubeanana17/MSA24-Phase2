@@ -26,6 +26,9 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            //occur badRequest if any input does not match required condition in DTOs
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var departments = await _departmentRepo.GetAllAsync();
 
             var departmentDto = departments.Select(s => s.ToDepartmentDto());
@@ -36,6 +39,8 @@ namespace backend.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var department = await _departmentRepo.GetByIdAsync(id);
 
             if(department == null)
@@ -49,6 +54,8 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDepartmentDto departmentDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var departmentModel = departmentDto.ToDepartmentFromDepartmentDto();
             await _departmentRepo.CreateAsync(departmentModel);
             return CreatedAtAction(nameof(GetById), new { id = departmentModel.Id }, departmentModel.ToDepartmentDto());
@@ -58,6 +65,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateDepartmentDto departmentDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var departmentModel = await _departmentRepo.UpdateAsync(id, departmentDto);
 
             if(departmentModel == null)
@@ -72,6 +81,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+            
             var departmentModel = await _departmentRepo.DeleteAsync(id);
 
             if(departmentModel == null)

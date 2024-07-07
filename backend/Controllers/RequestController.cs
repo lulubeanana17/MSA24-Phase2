@@ -28,6 +28,8 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var requests = await _requestRepo.GetAllAsync();
 
             var requestDto = requests.Select(s => s.ToRequestDto());
@@ -38,6 +40,8 @@ namespace backend.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var request = await _requestRepo.GetByIdAsync(id);
 
             if(request == null)
@@ -51,6 +55,8 @@ namespace backend.Controllers
         [HttpPost("{UrgencyId:int}/{DepartmentId:int}/{ProgressId:int}")]
         public async Task<IActionResult> Create([FromRoute] int UrgencyId, [FromRoute] int DepartmentId, [FromRoute] int ProgressId, CreateRequestDto requestDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             if(!await _urgencyRepo.UrgencyExists(UrgencyId)) return BadRequest("Urgency does not exist");
             if(!await _departmentRepo.DepartmentExists(DepartmentId)) return BadRequest("Department does not exist");
             if(!await _progressRepo.ProgressExists(ProgressId)) return BadRequest("Progress does not exist");
@@ -64,6 +70,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRequestDto requestDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var requestModel = await _requestRepo.UpdateAsync(id, requestDto);
 
             if(requestModel == null)
@@ -78,6 +86,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+            
             var requestModel = await _requestRepo.DeleteAsync(id);
 
             if(requestModel == null)

@@ -23,6 +23,8 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var progresses = await _progressRepo.GetAllAsync();
 
             var progressDto = progresses.Select(s => s.ToProgressDto());
@@ -33,6 +35,8 @@ namespace backend.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var progress = await _progressRepo.GetByIdAsync(id);
 
             if(progress == null)
@@ -46,6 +50,8 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateProgressDto progressDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var progressModel = progressDto.ToProgressFromProgressDto();
             await _progressRepo.CreateAsync(progressModel);
             return CreatedAtAction(nameof(GetById), new { id = progressModel.Id }, progressModel.ToProgressDto());
@@ -55,6 +61,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProgressDto progressDto)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+
             var progressModel = await _progressRepo.UpdateAsync(id, progressDto);
 
             if(progressModel == null)
@@ -69,6 +77,8 @@ namespace backend.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+            
             var progressModel = await _progressRepo.DeleteAsync(id);
 
             if(progressModel == null)
