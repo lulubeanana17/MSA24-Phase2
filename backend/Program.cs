@@ -24,6 +24,17 @@ builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IProgressRepository, ProgressRepository>();
 builder.Services.AddScoped<IRequestRepository, RequestRepository>();
 
+// Allow CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+            .AllowAnyHeader()
+            .AllowAnyOrigin(); // For localhost only. Allow all
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
