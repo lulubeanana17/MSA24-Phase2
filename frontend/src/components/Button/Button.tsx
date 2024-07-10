@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "./Button.style";
+import { ButtonProps as MuiButtonProps } from "@mui/material";
 
-interface ButtonProps {
+interface ButtonProps extends MuiButtonProps {
   fontColor: string;
   backgroundColor: string;
   fontColorHover: string;
