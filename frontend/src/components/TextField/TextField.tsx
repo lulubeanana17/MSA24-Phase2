@@ -8,8 +8,7 @@ export type TextFieldProps = MuiTextFieldProps & {
   onChange?: () => void;
 }
 
-export default function BasicTextField(props: TextFieldProps) {
-  const { label, row, onChange, ...otherProps } = props;
+const CustomTextField = ({label, row, onChange, ...props}: TextFieldProps) => {
 
   return (
       <TextField
@@ -19,7 +18,9 @@ export default function BasicTextField(props: TextFieldProps) {
         onChange={onChange}
         multiline
         rows={row}
-        {...otherProps}
+        {...props}
       />
   );
 }
+
+export default CustomTextField;

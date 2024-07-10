@@ -1,7 +1,9 @@
 "use client";
 import styles from "./page.module.css";
 import Button from "../components/Button/Button";
-import TextField from "../components/TextField/TextField"
+import TextField from "../components/TextField/TextField";
+import Select from "../components/Select/Select";
+import Text from "../components/Text/Text";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
         label="hi"
       />
   <TextField />
+  <Select options={[]} />
+  <Text color="error" children="hi nigiri" />
     </main>
   );
 }
