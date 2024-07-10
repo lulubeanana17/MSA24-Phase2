@@ -1,4 +1,3 @@
-import react, { FunctionComponent } from "react";
 import { Button as MuiButton } from "@mui/material";
 import { ButtonProps as MuiButtonProps } from "@mui/material";
 import styled from "styled-components";
