@@ -8,7 +8,6 @@ interface ButtonProps extends MuiButtonProps {
   fontColorHover: string;
   backgroundColorHover: string;
   label: string;
-  onClick?: () => void;
 }
 
 const CustomButton = ({
