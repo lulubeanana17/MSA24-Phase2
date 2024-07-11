@@ -2,13 +2,14 @@ import React from 'react';
 import Text from "./Text.style";
 
 interface ColorTextProps extends React.HTMLAttributes<HTMLSpanElement> {
+  className: string;
   color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
   children: React.ReactNode;
 }
 
-const CustomText = ({ color, children }: ColorTextProps) => {
+const CustomText = ({ className, color, children }: ColorTextProps) => {
   return (
-    <Text color={color}>
+    <Text className={className} color={color}>
       {children}
     </Text>
   );
