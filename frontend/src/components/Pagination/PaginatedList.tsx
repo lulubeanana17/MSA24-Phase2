@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import StyledPaginationContainer from './PaginatedList.style';
 import ItemsList from './ItemsList';
 import PaginationControl from './PaginationControl';
+import { requestsType } from '@/feature/browse/types/requestsType';
 
-const items = Array.from({ length: 100 }, (_, index) => `Item ${index + 1}`); //array from Request GET API
+interface listProps {
+  items: requestsType[];
+  itemsPerPage: number;
+}
 
-const PaginatedList = () => {
+const PaginatedList = ({items, itemsPerPage}: listProps) => {
   const [page, setPage] = useState(1);
-  const itemsPerPage = 9;
   const count = Math.ceil(items.length / itemsPerPage);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {

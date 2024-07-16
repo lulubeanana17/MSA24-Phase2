@@ -1,5 +1,5 @@
 import useRequests from "@/feature/browse/hooks/useRequests";
-import RequestDependencies from "./requestDependencies";
+import PaginatedList from "@/components/Pagination/PaginatedList";
 
 export default function RequestsGET() {
   const { status, data, error, isFetching } = useRequests();
@@ -15,9 +15,7 @@ export default function RequestsGET() {
         ) : (
           <>
             <div>
-              {data.map((request) => (
-                <RequestDependencies {...request} />
-              ))}
+              <PaginatedList items={data} itemsPerPage={9} />
             </div>
             <div>{isFetching ? "Background Updating..." : " "}</div>
           </>
