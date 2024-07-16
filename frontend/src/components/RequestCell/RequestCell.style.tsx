@@ -28,6 +28,13 @@ const StyledRequestCell = styled.div<RequestCellProps>`
   .Text-title {
   font-size: 1.25rem;
   font-weight: 600;}
+
+  .Text-progress {
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  }
 `;
 
 export default StyledRequestCell;

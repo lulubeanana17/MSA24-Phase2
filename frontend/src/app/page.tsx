@@ -31,6 +31,7 @@ export default function Home() {
         urgency="within 20mins"
         department="housekeeing"
         startTime="15:39pm"
+        progress="Not Started"
       />
     </main>
   );

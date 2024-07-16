@@ -10,10 +10,11 @@ interface requestCellProps {
   detail?: string;
   urgency: string;
   department: string;
+  progress: string;
   startTime: string;
 }
 
-const CustomRequestCell = ({borderColor, width, height, title, location, detail, urgency, department, startTime}: requestCellProps) => {
+const CustomRequestCell = ({borderColor, width, height, title, location, detail, urgency, department, progress, startTime}: requestCellProps) => {
     return (
         <RequestCellContainer borderColor={borderColor} width={width} height={height}>
             <Text className="Text-title" color="secondary" children={title} />
@@ -22,6 +23,7 @@ const CustomRequestCell = ({borderColor, width, height, title, location, detail,
             <Text className="Text-urgency" color="success" children={urgency} />
             <Text className="Text-department" color="success" children={department} />
             <Text className="Text-startTime" color="success" children={startTime} />
+            <Text className="Text-progress" color="warning" children={progress} />
         </RequestCellContainer>
     )
 }
