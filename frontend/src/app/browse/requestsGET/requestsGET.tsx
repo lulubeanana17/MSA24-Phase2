@@ -1,5 +1,5 @@
 import useRequests from "@/feature/browse/hooks/useRequests";
-import PaginatedList from "@/components/Pagination/PaginatedList";
+import PaginatedList from "@/components/Pagination/Browse/PaginatedList";
 
 export default function RequestsGET() {
   const { status, data, error, isFetching } = useRequests();

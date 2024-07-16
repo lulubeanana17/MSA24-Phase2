@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StyledPaginationContainer from './PaginatedList.style';
 import ItemsList from './ItemsList';
-import PaginationControl from './PaginationControl';
+import PaginationControl from '../PaginationControl';
 import { requestsType } from '@/feature/browse/types/requestsType';
 
 interface listProps {
