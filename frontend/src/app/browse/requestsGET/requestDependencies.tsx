@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from 'next/router';
 import useUrgency from "@/feature/browse/hooks/useUrgency";
 import useDepartment from "@/feature/browse/hooks/useDepartment";
 import useProgress from "@/feature/browse/hooks/useProgress";
@@ -16,14 +15,9 @@ const RequestDependencies = ({
   departmentId,
   progressId,
 }: requestsType) => {
-  // const router = useRouter();
   const { status: urgencyStatus, data: urgency } = useUrgency(urgencyId);
   const { status: departmentStatus, data: department } = useDepartment(departmentId);
   const { status: progressStatus, data: progress } = useProgress(progressId);
-
-  // const handleRequestClick = () => {
-  //   router.push(`/browse/${id}`);
-  // };
 
   return (
     <div>
@@ -31,7 +25,7 @@ const RequestDependencies = ({
         "Loading..."
       ) : urgencyStatus === "error" || departmentStatus === "error" || progressStatus === "error" ? (
         <span>Error loading data</span>
-      ) : (
+      ) : (            
         <RequestCell
           borderColor="primary"
           width="18rem"
@@ -43,7 +37,6 @@ const RequestDependencies = ({
           department={department?.title || "Unknown"}
           startTime={startTime}
           progress={progress?.title || "Unknown"}
-          // onClick={handleRequestClick}
         />
       )}
     </div>

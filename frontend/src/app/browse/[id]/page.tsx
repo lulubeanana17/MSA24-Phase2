@@ -1,23 +1,15 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import useRequest from '@/feature/browse/hooks/useRequest';
+"use client";
 
-const browseRequestById = () => {
-  const router = useRouter();
+import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import useRequest from "@/feature/browse/hooks/useRequest";
 
-  const [numericId, setNumericId] = React.useState<number>(0);
+interface RequestAPIProps {
+  id: number;
+}
 
-  React.useEffect(() => {
-    if (router.isReady) {
-      const { id } = router.query;
-      if (id) {
-        const numericId = parseInt(id as string, 10);
-        setNumericId(numericId);
-      }
-    }
-  }, [router.isReady, router.query]);
-
-  const { status, data } = useRequest(numericId);
+const RequestAPI = ({ id }: RequestAPIProps) => {
+  const { status, data } = useRequest(id);
 
   return (
     <div>
@@ -26,10 +18,20 @@ const browseRequestById = () => {
       ) : status === "error" ? (
         <span>Error loading data</span>
       ) : (
-        <div>
-            {data.title}
-            </div>
+        <div>{data.title}</div>
       )}
+    </div>
+  );
+};
+
+const browseRequestById = ({ params }: { params: { id: number } }) => {
+  const queryClient = new QueryClient();
+
+  return (
+    <div>
+      <QueryClientProvider client={queryClient}>
+        <RequestAPI id={params.id} />
+      </QueryClientProvider>
     </div>
   );
 };
