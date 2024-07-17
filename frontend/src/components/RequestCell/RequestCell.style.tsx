@@ -24,6 +24,7 @@ const StyledRequestCell = styled.div<RequestCellProps>`
   line-height: 2.5rem;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  cursor: pointer;
 
   .Text-title {
   font-size: 1.25rem;

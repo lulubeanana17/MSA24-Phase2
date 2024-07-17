@@ -1,7 +1,7 @@
 import {
     useQuery,
   } from '@tanstack/react-query';
-import getUrgency from '../services/urgencyService';
+import getUrgency from '../services/urgencyByIdService';
 
 export default function useUrgency(urgencyId: number) {
     return useQuery({

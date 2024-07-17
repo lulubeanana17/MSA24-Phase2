@@ -1,7 +1,7 @@
 import {
     useQuery,
   } from '@tanstack/react-query';
-import getDepartment from '../services/departmentService';
+import getDepartment from '../services/departmentByIdService';
 
 export default function useDepartment(departmentId: number) {
     return useQuery({
