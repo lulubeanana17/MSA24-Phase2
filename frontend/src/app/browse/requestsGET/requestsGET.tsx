@@ -2,7 +2,7 @@ import useRequests from "@/feature/browse/hooks/useRequests";
 import PaginatedList from "@/components/Pagination/Browse/PaginatedList";
 
 export default function RequestsGET() {
-  const { status, data, error, isFetching } = useRequests();
+  const { status, data } = useRequests();
 
   return (
     <div>
@@ -11,13 +11,12 @@ export default function RequestsGET() {
         {status === "pending" ? (
           "Loading..."
         ) : status === "error" ? (
-          <span>Error: {error.message}</span>
+          <span>Error</span>
         ) : (
           <>
             <div>
               <PaginatedList items={data} itemsPerPage={9} />
             </div>
-            <div>{isFetching ? "Background Updating..." : " "}</div>
           </>
         )}
       </div>

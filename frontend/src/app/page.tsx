@@ -12,9 +12,9 @@ export default function Home() {
     <main className={styles.main}>
       <Button
         fontColor="#FFFFFF"
-        backgroundColor="#FF5B6F"
+        backgroundColor="primary"
         fontColorHover="#FFFFFF"
-        backgroundColorHover="#E04860"
+        backgroundColorHover="primary"
         label="hi"
       />
       <TextField />

@@ -4,9 +4,9 @@ import { ButtonProps as MuiButtonProps } from "@mui/material";
 
 interface ButtonProps extends MuiButtonProps {
   fontColor: string;
-  backgroundColor: string;
+  backgroundColor: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
   fontColorHover: string;
-  backgroundColorHover: string;
+  backgroundColorHover: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
   label: string;
 }
 
