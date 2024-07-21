@@ -26,6 +26,7 @@ const CustomButton = ({
       backgroundColorHover={backgroundColorHover}
       onClick={props.onClick}
       variant="contained"
+      {...props}
     >
       {label}
     </Button>

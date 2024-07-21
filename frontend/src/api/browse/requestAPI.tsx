@@ -2,7 +2,7 @@ import useRequest from "@/feature/browse/hooks/useRequest";
 import useUrgency from "@/feature/browse/hooks/useUrgency";
 import useDepartment from "@/feature/browse/hooks/useDepartment";
 import useProgress from "@/feature/browse/hooks/useProgress";
-import RequestGET from "@/app/browse/[id]/requestGET/requestGET";
+import RequestGET from "@/app/browse/[id]/GET/requestGET";
 
 interface RequestAPIProps {
   id: number;
