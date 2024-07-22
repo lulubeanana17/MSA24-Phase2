@@ -9,8 +9,6 @@ interface RequestCellProps {
     | "warning"
     | "info"
     | "success";
-  width: string;
-  height: string;
 }
 
 const StyledRequestCell = styled.div<RequestCellProps>`
@@ -22,19 +20,82 @@ const StyledRequestCell = styled.div<RequestCellProps>`
   display: flex;
   flex-direction: column;
   line-height: 2.5rem;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+  width: 18rem;
+  height: 18rem;
   cursor: pointer;
 
   .Text-title {
-  font-size: 1.25rem;
-  font-weight: 600;}
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
 
   .Text-progress {
-  font-size: 2rem;
-  font-weight: 600;
-  font-style: italic;
-  text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+  }
+
+  /*desktop*/
+  @media screen and (max-width: 1920px) {
+    padding: 1.4rem;
+    width: 17rem;
+    height: 17rem;
+    line-height: 2.3rem;
+
+    .Text-progress {
+      font-size: 1.8rem;
+    }
+  }
+
+  /*laptop*/
+  @media screen and (max-width: 1367px) {
+  padding: 1rem;
+    width: 15rem;
+    height: 15rem;
+    line-height: 2rem;
+
+    .Text-progress {
+      font-size: 1.6rem;
+    }
+  }
+
+  /*tablet*/
+  @media screen and (max-width: 769px) {
+  padding: 1rem;
+    width: 12rem;
+    height: 12rem;
+    line-height: 1.7rem;
+
+    .Text-title {
+      font-size: 1rem;
+    }
+    .Text {
+      font-size: 0.8rem;
+    }
+
+    .Text-progress {
+      font-size: 1.3rem;
+    }
+  }
+
+  /*mobile*/
+  @media screen and (max-width: 361px) {
+  padding: 1rem;
+    width: 12rem;
+    height: 12rem;
+    line-height: 1.7rem;
+
+    .Text-title {
+      font-size: 1rem;
+    }
+    .Text {
+      font-size: 0.8rem;
+    }
+
+    .Text-progress {
+      font-size: 1.3rem;
+    }
   }
 `;
 

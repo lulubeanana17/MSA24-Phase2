@@ -1,5 +1,5 @@
 import React from "react";
-import StyledItemsContainer from "./ItemsList.style";
+import StyledContainer from "./ItemsList.style";
 import RequestCellAPI from "@/api/browse/requestCellAPI";
 import { requestsType } from "@/feature/browse/types/requestsType";
 import Link from "next/link";
@@ -10,13 +10,13 @@ interface ItemsListProps {
 
 const CustomItemsList = ({ items }: ItemsListProps) => {
   return (
-    <StyledItemsContainer>
-      {items.map((request) => (
-        <Link href={`browse/${request.id}`}>
-          <RequestCellAPI {...request} />
-        </Link>
-      ))}
-    </StyledItemsContainer>
+    <StyledContainer>
+        {items.map((request) => (
+          <Link className="cell" href={`browse/${request.id}`}>
+            <RequestCellAPI {...request} />
+          </Link>
+        ))}
+    </StyledContainer>
   );
 };
 

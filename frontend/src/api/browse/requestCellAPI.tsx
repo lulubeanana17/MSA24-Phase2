@@ -28,8 +28,6 @@ const RequestCellAPI = ({
       ) : (            
         <RequestCell
           borderColor="primary"
-          width="18rem"
-          height="18rem"
           title={title}
           location={location}
           detail={detail}
