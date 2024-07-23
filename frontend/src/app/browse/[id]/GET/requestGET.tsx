@@ -1,35 +1,26 @@
-"use client";
-
-import { requestsType } from "@/feature/browse/types/requestsType";
-import { urgencyType } from "@/feature/browse/types/urgencyType";
-import { departmentType } from "@/feature/browse/types/departmentType";
-import { progressType } from "@/feature/browse/types/progressType";
+import useRequest from "@/feature/browse/hooks/useRequest";
+import useUrgency from "@/feature/browse/hooks/useUrgency";
+import useDepartment from "@/feature/browse/hooks/useDepartment";
+import useProgress from "@/feature/browse/hooks/useProgress";
 import RequestPUT from "../PUT/requestPUT";
 import RequestPUTReverse from "../PUT/requestPUTReverse";
 import Text from "@/components/Text/Text";
 import StyledContainer from "./requestGET.style";
 
 interface requestGETProps {
-  status: string;
-  urgencyStatus: string;
-  departmentStatus: string;
-  progressStatus: string;
-  data: requestsType | undefined;
-  urgency: urgencyType | undefined;
-  department: departmentType | undefined;
-  progress: progressType | undefined;
+  id: number;
 }
 
-const RequestGET = ({
-  status,
-  urgencyStatus,
-  departmentStatus,
-  progressStatus,
-  data,
-  urgency,
-  department,
-  progress,
-}: requestGETProps) => {
+const RequestGET = ({ id }: requestGETProps) => {
+  const { status, data } = useRequest(id);
+  const { status: urgencyStatus, data: urgency } = useUrgency(data?.urgencyId);
+  const { status: departmentStatus, data: department } = useDepartment(
+    data?.departmentId
+  );
+  const { status: progressStatus, data: progress } = useProgress(
+    data?.progressId
+  );
+
   return (
     <StyledContainer>
       <Text className="header" color="primary" children="A Request" />
@@ -103,7 +94,7 @@ const RequestGET = ({
               <Text
                 className="content-normal"
                 color="secondary"
-                children={data?.detail? data?.detail : "N/A"}
+                children={data?.detail ? data?.detail : "N/A"}
               />
             </div>
             <div className="contentContainer">

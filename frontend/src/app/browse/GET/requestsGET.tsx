@@ -1,5 +1,5 @@
 import useRequests from "@/feature/browse/hooks/useRequests";
-import PaginatedList from "@/components/Pagination/Browse/PaginatedList";
+import PaginatedList from "../pagination/PaginatedList";
 import Text from "@/components/Text/Text";
 import StyledContainer from "./requestsGET.style";
 

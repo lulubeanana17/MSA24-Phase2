@@ -1,6 +1,6 @@
 import React from "react";
 import StyledContainer from "./ItemsList.style";
-import RequestCellAPI from "@/api/browse/requestCellAPI";
+import RequestPropertyGET from "../GET/requestPropertyGET";
 import { requestsType } from "@/feature/browse/types/requestsType";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ const CustomItemsList = ({ items }: ItemsListProps) => {
     <StyledContainer>
         {items.map((request) => (
           <Link className="cell" href={`browse/${request.id}`}>
-            <RequestCellAPI {...request} />
+            <RequestPropertyGET {...request} />
           </Link>
         ))}
     </StyledContainer>

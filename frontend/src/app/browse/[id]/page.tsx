@@ -2,7 +2,7 @@
 
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import RequestAPI from "@/api/browse/requestAPI";
+import RequestGET from "./GET/requestGET";
 
 const browseRequestById = ({ params }: { params: { id: number } }) => {
   const queryClient = new QueryClient();
@@ -10,7 +10,7 @@ const browseRequestById = ({ params }: { params: { id: number } }) => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <RequestAPI id={params.id} />
+        <RequestGET id={params.id} />
       </QueryClientProvider>
     </div>
   );

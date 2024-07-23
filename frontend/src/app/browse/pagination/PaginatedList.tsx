@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StyledPaginationContainer from './PaginatedList.style';
 import ItemsList from './ItemsList';
-import PaginationControl from '../PaginationControl';
+import CustomPaginationControl from '@/components/Pagination/PaginationControl';
 import { requestsType } from '@/feature/browse/types/requestsType';
 
 interface listProps {
@@ -22,7 +22,7 @@ const PaginatedList = ({items, itemsPerPage}: listProps) => {
   return (
     <StyledPaginationContainer>
       <ItemsList items={paginatedItems} />
-      <PaginationControl count={count} page={page} onChange={handleChange} />
+      <CustomPaginationControl count={count} page={page} onChange={handleChange} />
     </StyledPaginationContainer>
   );
 };

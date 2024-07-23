@@ -5,7 +5,7 @@ import useProgress from "@/feature/browse/hooks/useProgress";
 import RequestCell from "@/components/RequestCell/RequestCell";
 import { requestsType } from "@/feature/browse/types/requestsType";
 
-const RequestCellAPI = ({
+const RequestPropertyGET = ({
   id,
   title,
   location,
@@ -41,4 +41,4 @@ const RequestCellAPI = ({
   );
 };
 
-export default RequestCellAPI;
+export default RequestPropertyGET;

@@ -2,7 +2,7 @@
 
 import { MainContainer } from "./page.style";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import RequestsGET from "./requestsGET/requestsGET";
+import RequestsGET from "./GET/requestsGET";
 
 export default function App() {
   const queryClient = new QueryClient();
