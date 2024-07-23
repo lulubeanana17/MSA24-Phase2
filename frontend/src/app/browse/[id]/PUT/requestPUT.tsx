@@ -1,6 +1,6 @@
 import { requestsType } from "@/feature/browse/types/requestsType";
 import { progressType } from "@/feature/browse/types/progressType";
-import CustomButton from "@/components/Button/Button";
+import Button from "@/components/Button/Button";
 import useRequestPUT from "@/feature/browse/hooks/useRequestPUT";
 
 interface requestPUTProps {
@@ -25,7 +25,7 @@ const RequestPUT = ({data, progress}: requestPUTProps) => {
 
   return (
     <div>
-        <CustomButton
+        <Button
                 fontColor="#FFFFFF"
                 backgroundColor="primary"
                 fontColorHover="#FFFFFF"

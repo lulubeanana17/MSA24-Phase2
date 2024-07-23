@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Step as MuiStep , StepProps as MuiStepProps } from '@mui/material';
+import theme from '../Theme/Theme';
 
 const StyledStep = styled(MuiStep)<MuiStepProps>`
   .MuiStepIcon {
@@ -18,7 +19,7 @@ const StyledStep = styled(MuiStep)<MuiStepProps>`
     }
 
     &-active {
-      background-color: #228be6;
+      background-color: ${theme.palette["primary"].main};
     }
 
     &-completed {
