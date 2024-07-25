@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { stat } from "fs";
 
 interface FormState {
   title: string;
   location: string;
-  urgencyId: number;
-  departmentId: number;
+  urgencyId: number | null;
+  urgencyTitle: string;
+  departmentId: number | null;
+  departmentTitle: string;
   progressId: number;
   detail: string;
 }
@@ -12,8 +15,10 @@ interface FormState {
 const initialState: FormState = {
   title: "",
   location: "",
-  urgencyId: 0,
-  departmentId: 0,
+  urgencyId: null,
+  urgencyTitle: "",
+  departmentId: null,
+  departmentTitle: "",
   progressId: 1,
   detail: "",
 };
@@ -31,8 +36,14 @@ const formSlice = createSlice({
     setUrgencyId: (state, action: PayloadAction<number>) => {
       state.urgencyId = action.payload;
     },
+    setUrgencyTitle: (state, action: PayloadAction<string>) => {
+      state.urgencyTitle = action.payload;
+    },
     setDepartmentId: (state, action: PayloadAction<number>) => {
       state.departmentId = action.payload;
+    },
+    setDepartmentTitle: (state, action: PayloadAction<string>) => {
+      state.departmentTitle = action.payload;
     },
     setProgressId: (state, action: PayloadAction<number>) => {
       state.progressId = action.payload;
@@ -47,8 +58,28 @@ const formSlice = createSlice({
       const { field, value } = action.payload;
       (state as any)[field] = value;
     },
+    resetForm: (state) => {
+      state.title = "";
+      state.location = "";
+      state.urgencyId = null;
+      state.urgencyTitle = "";
+      state.departmentId = null;
+      state.departmentTitle = "";
+      state.detail = "";
+    },
   },
 });
 
-export const { setTitle, setLocation, setUrgencyId, setDepartmentId, setProgressId, setDetail, setField } = formSlice.actions;
+export const {
+  setTitle,
+  setLocation,
+  setUrgencyId,
+  setUrgencyTitle,
+  setDepartmentId,
+  setDepartmentTitle,
+  setProgressId,
+  setDetail,
+  setField,
+  resetForm,
+} = formSlice.actions;
 export default formSlice.reducer;

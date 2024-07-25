@@ -9,7 +9,11 @@ import { MainContainer } from "./FormInputs.style";
 import useUrgencies from "@/feature/post/hooks/useUrgencies";
 import useDepartments from "@/feature/post/hooks/useDepartments";
 
-const FormInputs = () => {
+interface FormInputsProps {
+  value: boolean
+}
+
+const FormInputs = ({value}: FormInputsProps) => {
   const dispatch = useAppDispatch();
   const formState = useAppSelector((state) => state.form);
 
@@ -25,6 +29,13 @@ const FormInputs = () => {
     const { name, value } = e.target;
     if (name) {
       dispatch(setField({ field: name, value: value as number }));
+      
+      if(name === "urgencyId") {
+        dispatch(setField({ field: "urgencyTitle", value: urgencyData?.find((item) => item.id === value)?.title as string }));
+      }
+      if(name === "departmentId") {
+        dispatch(setField({ field: "departmentTitle", value: departmentData?.find((item) => item.id === value)?.title as string }));
+      }
     }
   };
 
@@ -34,23 +45,25 @@ const FormInputs = () => {
   return (
     <MainContainer>
       <div>
-        <Text className="head" color="secondary" children="Request Title" />
+        <Text className="head" color="secondary" children="* Request Title" />
         <TextField
           name="title"
           value={formState.title}
           onChange={handleTextFieldChange}
+          error={value}
         />
       </div>
       <div>
-        <Text className="head" color="secondary" children="Location" />
+        <Text className="head" color="secondary" children="* Location" />
         <TextField
           name="location"
           value={formState.location}
           onChange={handleTextFieldChange}
+          error={value}
         />
       </div>
       <div>
-        <Text className="head" color="secondary" children="Urgency" />
+        <Text className="head" color="secondary" children="* Urgency" />
         {urgencyStatus === "error" ? (
           <Select
             name="urgencyId"
@@ -65,11 +78,12 @@ const FormInputs = () => {
             value={formState.urgencyId}
             options={urgencyData}
             onChange={handleSelectChange}
+            error={value}
           />
         )}
       </div>
       <div>
-        <Text className="head" color="secondary" children="Department" />
+        <Text className="head" color="secondary" children="* Department" />
         {departmentStatus === "error" ? (
           <Select
             name="departmentId"
@@ -84,6 +98,8 @@ const FormInputs = () => {
             value={formState.departmentId}
             options={departmentData}
             onChange={handleSelectChange}
+            required={true}
+            error={value}
           />
         )}
       </div>

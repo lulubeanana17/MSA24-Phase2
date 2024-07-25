@@ -64,7 +64,7 @@ namespace backend.Controllers
 
             var requestModel = requestDto.ToRequestFromCreate(UrgencyId, DepartmentId, ProgressId);
             await _requestRepo.CreateAsync(requestModel);
-            return CreatedAtAction(nameof(GetById), new { id = requestModel}, requestModel.ToRequestDto());
+            return CreatedAtAction(nameof(GetById), new { id = requestModel.Id}, requestModel.ToRequestDto());
         }
 
         [HttpPut]

@@ -1,14 +1,23 @@
-import * as React from 'react';
+import * as React from "react";
 import TextField from "./TextField.style";
-import { TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import { TextFieldProps as MuiTextFieldProps } from "@mui/material";
 
 export type TextFieldProps = MuiTextFieldProps & {
   row?: number;
-}
+  error?: boolean;
+};
 
-const CustomTextField = ({label, row, onChange, ...props}: TextFieldProps) => {
-
+const CustomTextField = ({
+  label,
+  row,
+  onChange,
+  error,
+  ...props
+}: TextFieldProps) => {
   return (
+    <>
       <TextField
         fullWidth
         id="outlined-controlled"
@@ -16,9 +25,12 @@ const CustomTextField = ({label, row, onChange, ...props}: TextFieldProps) => {
         onChange={onChange}
         multiline
         rows={row}
+        error={error}
         {...props}
       />
+      <FormHelperText>{error ? "Error" : ""}</FormHelperText>
+    </>
   );
-}
+};
 
 export default CustomTextField;

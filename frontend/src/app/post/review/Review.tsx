@@ -17,11 +17,11 @@ export const RequestReview = () => {
             </div>
             <div>
             <Text className="head" color="secondary" children="Urgency" />
-            <Text className="body" color="secondary" children={formState.urgencyId} />
+            <Text className="body" color="secondary" children={formState.urgencyTitle} />
             </div>
             <div>
             <Text className="head" color="secondary" children="Department" />
-            <Text className="body" color="secondary" children={formState.departmentId} />
+            <Text className="body" color="secondary" children={formState.departmentTitle} />
             </div>
             <div>
             <Text className="head" color="secondary" children="Request Detail" />
