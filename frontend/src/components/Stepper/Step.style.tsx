@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Step as MuiStep , StepProps as MuiStepProps } from '@mui/material';
-import theme from '../Theme/Theme';
+import styled from "styled-components";
+import { Step as MuiStep, StepProps as MuiStepProps } from "@mui/material";
+import theme from "../Theme/Theme";
 
 const StyledStep = styled(MuiStep)<MuiStepProps>`
   .MuiStepIcon {
@@ -34,6 +34,15 @@ const StyledStep = styled(MuiStep)<MuiStepProps>`
     font-style: normal;
     line-height: 1.43;
     letter-spacing: 0px;
+
+    /*tablet*/
+    @media screen and (max-width: 769px) {
+      font-size: 1rem;
+    }
+    /*mobile*/
+    @media screen and (max-width: 361px) {
+      font-size: 0.75rem;
+    }
   }
 `;
 

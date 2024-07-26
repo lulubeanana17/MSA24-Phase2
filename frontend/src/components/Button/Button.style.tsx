@@ -27,6 +27,17 @@ const StyledButton = styled(MuiButton)<customButtonProps>`
     background-color: ${({ backgroundColorHover }) => (backgroundColorHover && theme.palette[backgroundColorHover].dark) || "#000000"};
     color: ${({ fontColorHover }) => fontColorHover};
   }
+
+  font-size: 1rem;
+
+  /*tablet*/
+    @media screen and (max-width: 769px) {
+      font-size: 0.8rem;
+    }
+    /*mobile*/
+    @media screen and (max-width: 361px) {
+      font-size: 0.65rem;
+    }
 `;
 
 export default StyledButton;

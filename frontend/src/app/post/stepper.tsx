@@ -31,8 +31,8 @@ export const StepperPage = () => {
     detail: formState.detail,
     urgencyId: formState.urgencyId,
     departmentId: formState.departmentId,
-    progressId: formState.progressId
-};
+    progressId: formState.progressId,
+  };
 
   const handleBack = () => {
     setCurrentStep(currentStep - 1);
@@ -55,9 +55,9 @@ export const StepperPage = () => {
   const handleSubmit = () => {
     mutate(requestPost, {
       onSuccess: () => {
-          setCurrentStep(currentStep + 1);
-      }
-  });
+        setCurrentStep(currentStep + 1);
+      },
+    });
   };
 
   const handleReset = () => {
@@ -111,16 +111,18 @@ export const StepperPage = () => {
           )}
         </div>
       ) : (
-        <Link className="reset" href={`post`}>
-          <Button
-            fontColor="#FFFFFF"
-            backgroundColor="primary"
-            fontColorHover="#FFFFFF"
-            backgroundColorHover="primary"
-            label="Post more"
-            onClick={handleReset}
-          />
-        </Link>
+        <div className="postmore">
+          <Link className="reset" href={`post`}>
+            <Button
+              fontColor="#FFFFFF"
+              backgroundColor="primary"
+              fontColorHover="#FFFFFF"
+              backgroundColorHover="primary"
+              label="Post more"
+              onClick={handleReset}
+            />
+          </Link>
+        </div>
       )}
     </MainContainer>
   );

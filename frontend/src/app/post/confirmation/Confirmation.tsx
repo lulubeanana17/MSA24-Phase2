@@ -5,7 +5,7 @@ export const RequestConfirmation = () => {
   return (
     <MainContainer>
       <Text
-        className="head"
+        className="main"
         color="secondary"
         children="Your request is successfully submitted!"
       />
