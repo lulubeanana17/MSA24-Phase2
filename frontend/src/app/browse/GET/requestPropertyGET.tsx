@@ -4,6 +4,7 @@ import useDepartment from "@/feature/browse/hooks/useDepartment";
 import useProgress from "@/feature/browse/hooks/useProgress";
 import RequestCell from "@/components/RequestCell/RequestCell";
 import { requestsType } from "@/feature/browse/types/requestsType";
+import Loading from "@/components/Loading/Loading";
 
 const RequestPropertyGET = ({
   id,
@@ -22,7 +23,7 @@ const RequestPropertyGET = ({
   return (
     <div>
       {urgencyStatus === "pending" || departmentStatus === "pending" || progressStatus === "pending" ? (
-        "Loading..."
+        <Loading />
       ) : urgencyStatus === "error" || departmentStatus === "error" || progressStatus === "error" ? (
         <span>Error loading data</span>
       ) : (            

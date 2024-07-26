@@ -1,6 +1,7 @@
 import useRequests from "@/feature/browse/hooks/useRequests";
 import PaginatedList from "../pagination/PaginatedList";
 import Text from "@/components/Text/Text";
+import Loading from "@/components/Loading/Loading";
 import StyledContainer from "./requestsGET.style";
 
 export default function RequestsGET() {
@@ -8,16 +9,16 @@ export default function RequestsGET() {
 
   return (
     <StyledContainer>
-      <Text className="header" color="primary" children="Browse Requests" />
-      <div>
-        {status === "pending" ? (
-          "Loading..."
-        ) : status === "error" ? (
-          <span>Error</span>
-        ) : (
+      {status === "pending" ? (
+        <Loading />
+      ) : status === "error" ? (
+        <span>Error</span>
+      ) : (
+        <>
+          <Text className="header" color="primary" children="Browse Requests" />
           <PaginatedList items={data} itemsPerPage={9} />
-        )}
-      </div>
+        </>
+      )}
     </StyledContainer>
   );
 }
