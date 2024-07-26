@@ -51,12 +51,24 @@ const StyledRequestCell = styled.div<RequestCellProps>`
   /*laptop*/
   @media screen and (max-width: 1367px) {
   padding: 1rem;
-    width: 15rem;
-    height: 15rem;
+    width: 14rem;
+    height: 14rem;
     line-height: 2rem;
 
     .Text-progress {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  /*laptop*/
+  @media screen and (max-width: 1100px) {
+  padding: 1rem;
+    width: 13rem;
+    height: 13rem;
+    line-height: 1.6rem;
+
+    .Text-progress {
+      font-size: 1.5rem;
     }
   }
 

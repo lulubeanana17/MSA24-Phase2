@@ -15,7 +15,7 @@ export default function RequestsGET() {
         <span>Error</span>
       ) : (
         <>
-          <Text className="header" color="primary" children="Browse Requests" />
+          <Text className="head" color="primary" children="Browse Requests" />
           <PaginatedList items={data} itemsPerPage={9} />
         </>
       )}

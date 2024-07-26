@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  margin: 3rem 30rem;
+  margin: 3rem 24rem;
   display: flex;
   flex-direction: column;
 
-  .header {
+  .head {
     font-size: 2rem;
     font-weight: 600;
     margin: 0 0 4rem 0;
@@ -13,30 +13,38 @@ const StyledContainer = styled.div`
 
   /*desktop-1*/
   @media screen and (max-width: 2040px) {
-    margin: 3rem 20rem;
-    .header {
+    margin: 3rem 16rem;
+    .head {
     margin: 0 0 3rem 0;
   }
   }
 
   /*desktop-2*/
   @media screen and (max-width: 1720px) {
-    margin: 3rem 15rem;
+    margin: 3rem 12rem;
   }
 
   /*desktop-3*/
   @media screen and (max-width: 1570px) {
-    margin: 3rem 8rem;
+    margin: 3rem 5rem;
   }
 
   /*laptop*/
   @media screen and (max-width: 1367px) {
-  margin: 3rem 5rem;
+  margin: 3rem 2.6rem;
+  }
+
+  /*laptop*/
+  @media screen and (max-width: 1100px) {
+  margin: 3rem 2rem;
   }
 
   /*tablet*/
   @media screen and (max-width: 769px) {
-  margin: 3rem 2rem;
+  margin: 3rem 1rem;
+  .head {
+    margin: 0 0 3rem 2rem;
+  }
   }
 
   /*mobile*/
