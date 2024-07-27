@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Step as MuiStep, StepProps as MuiStepProps } from "@mui/material";
-import theme from "../Theme/Theme";
+import { theme } from "../Theme/Theme";
 
 const StyledStep = styled(MuiStep)<MuiStepProps>`
   .MuiStepIcon {

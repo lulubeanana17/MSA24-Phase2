@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/components/Theme/Theme";
-import Navigation from "@/components/Navigation/Navigation";
-import ClientLayout from "./ClientLayout";
+import { theme } from "@/components/Theme/Theme";
 import "./globals.css";
 
 export const metadata: Metadata = {

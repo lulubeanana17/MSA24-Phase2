@@ -1,6 +1,6 @@
 import { Button as MuiButton } from "@mui/material";
 import { ButtonProps as MuiButtonProps } from "@mui/material";
-import theme from "../Theme/Theme";
+import { theme } from "../Theme/Theme";
 import styled from "styled-components";
 
 interface customButtonProps extends MuiButtonProps {

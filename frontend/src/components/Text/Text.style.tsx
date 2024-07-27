@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../Theme/Theme';
+import { theme } from '../Theme/Theme';
 
 interface StyledTextProps {
   color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
