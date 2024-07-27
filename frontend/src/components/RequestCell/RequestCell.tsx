@@ -17,7 +17,7 @@ const CustomRequestCell = ({borderColor, title, location, detail, urgency, depar
         <RequestCellContainer borderColor={borderColor}>
             <Text className="Text-title" color="secondary" children={title} />
             <Text className="Text" color="success" children={location} />
-            <Text className="Text" color="secondary" children={detail? detail : "N/A"} />
+            <Text className="Text-detail" color="secondary" children={detail? detail : "N/A"} />
             <Text className="Text" color="success" children={urgency} />
             <Text className="Text" color="success" children={department} />
             <Text className="Text" color="success" children={startTime} />

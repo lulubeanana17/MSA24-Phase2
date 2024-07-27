@@ -56,7 +56,9 @@ export const MainContainer = styled.div`
   @media screen and (max-width: 769px) {
     margin: 3rem 2rem;
     .header {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
+      margin: 0 0 3rem 2rem;
+      }
     }
     .stepper {
       margin: 0 3rem 1.5rem 3rem;
@@ -69,9 +71,6 @@ export const MainContainer = styled.div`
   /*mobile*/
   @media screen and (max-width: 361px) {
     margin: 3rem 1rem;
-    .header {
-      font-size: 1.5rem;
-    }
     .stepper {
       margin: 0 1.2rem 1rem 1.2rem;
     }

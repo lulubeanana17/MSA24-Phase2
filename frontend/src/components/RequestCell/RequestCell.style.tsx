@@ -23,10 +23,30 @@ const StyledRequestCell = styled.div<RequestCellProps>`
   width: 18rem;
   height: 18rem;
   cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: ${({ borderColor }) =>
+      (borderColor && theme.palette[borderColor].light) || "#000000"};
+
+    .Text-title {
+      color: ${theme.palette["secondary"].light};
+    }
+    .Text-progress {
+      color: ${theme.palette["warning"].light};
+    }
+    .Text {
+      color: ${theme.palette["success"].light};
+    }
+    .Text-detail {
+      color: ${theme.palette["secondary"].light};
+    }
+  }
 
   .Text-title {
     font-size: 1.25rem;
     font-weight: 600;
+    transition: color 0.3s ease;
   }
 
   .Text-progress {
@@ -34,6 +54,15 @@ const StyledRequestCell = styled.div<RequestCellProps>`
     font-weight: 600;
     font-style: italic;
     text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .Text {
+    transition: color 0.3s ease;
+  }
+
+  .Text-detail {
+    transition: color 0.3s ease;
   }
 
   /*desktop*/
@@ -50,7 +79,7 @@ const StyledRequestCell = styled.div<RequestCellProps>`
 
   /*laptop*/
   @media screen and (max-width: 1367px) {
-  padding: 1rem;
+    padding: 1rem;
     width: 14rem;
     height: 14rem;
     line-height: 2rem;
@@ -62,7 +91,7 @@ const StyledRequestCell = styled.div<RequestCellProps>`
 
   /*laptop*/
   @media screen and (max-width: 1100px) {
-  padding: 1rem;
+    padding: 1rem;
     width: 13rem;
     height: 13rem;
     line-height: 1.6rem;
@@ -74,7 +103,7 @@ const StyledRequestCell = styled.div<RequestCellProps>`
 
   /*tablet*/
   @media screen and (max-width: 769px) {
-  padding: 1rem;
+    padding: 1rem;
     width: 12rem;
     height: 12rem;
     line-height: 1.7rem;
@@ -93,7 +122,7 @@ const StyledRequestCell = styled.div<RequestCellProps>`
 
   /*mobile*/
   @media screen and (max-width: 361px) {
-  padding: 1rem;
+    padding: 1rem;
     width: 12rem;
     height: 12rem;
     line-height: 1.7rem;

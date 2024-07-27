@@ -53,6 +53,8 @@ const StyledContainer = styled.div`
   /*tablet*/
   @media screen and (max-width: 769px) {
   margin: 3rem 3rem;
+  .header {
+  font-size: 1.5rem;}
   }
 
   /*mobile*/

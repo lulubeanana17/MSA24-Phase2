@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Navigation from "@/components/Navigation/Navigation";
 import { MainContainer } from "./stepper.style";
 import { RequestDetail } from "./detail/Detail";
 import { RequestReview } from "./review/Review";
