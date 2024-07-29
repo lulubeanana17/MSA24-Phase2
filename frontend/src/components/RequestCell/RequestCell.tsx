@@ -15,9 +15,9 @@ interface requestCellProps {
 const CustomRequestCell = ({borderColor, title, location, detail, urgency, department, progress, startTime}: requestCellProps) => {
     return (
         <RequestCellContainer borderColor={borderColor}>
-            <Text className="Text-title" color="secondary" children={title} />
+            <Text className="Text-title" color="secondary" limit={20} children={title} />
             <Text className="Text" color="success" children={location} />
-            <Text className="Text-detail" color="secondary" children={detail? detail : "N/A"} />
+            <Text className="Text-detail" color="secondary" limit={25} children={detail? detail : "N/A"} />
             <Text className="Text" color="success" children={urgency} />
             <Text className="Text" color="success" children={department} />
             <Text className="Text" color="success" children={startTime} />
