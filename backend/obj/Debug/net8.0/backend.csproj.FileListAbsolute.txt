@@ -140,3 +140,6 @@ C:\MSA24\backend\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\MSA24\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\MSA24\backend\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\MSA24\backend\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\MSA24\backend\bin\Debug\net8.0\Azure.Extensions.AspNetCore.Configuration.Secrets.dll
+C:\MSA24\backend\bin\Debug\net8.0\Azure.Security.KeyVault.Secrets.dll
+C:\MSA24\backend\bin\Debug\net8.0\System.ClientModel.dll
