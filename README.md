@@ -8,10 +8,10 @@ About the App
 - My application offers a customised communication app for hotels. The functions are simple; Generate and Receive. The app consists of two pages, which are Post a job and Browse jobs.
 
 1. Post a job
-   - An administrator can generate a job, set a urgency (within some time it must be done), and assign department on the job. It confirms the details on Review page with them and post it.
+   - An administrator can generate a job, set a urgency (within some time it must be done), and assign a department on the job. It confirms the details on Review page with them and post it.
    
 3. Browse jobs
-   - Anyone who have access can see the jobs. each request cell shows the title, location, startTime, urgency, assigned department, and status (Not started, In Progress, Completed). When you enter the job, you can see the more detail of the selected job and can revoke, start, or complete the job by clicking the buttons.
+   - Anyone who have access can see the jobs. each request cell shows the title, location, startTime, urgency, assigned department, and status (Not started, In Progress, Completed). When you enter the job, you can see the more details of the selected job and can revoke, start, or complete the job by clicking the buttons.
 
 
 One thing about your project you are very proud of
@@ -19,9 +19,9 @@ One thing about your project you are very proud of
 
 - Regarding the technoligy wise, I am proud of my file structure. When I started frontend development 3 year's ago, I did not have a structure and did not know what it is. However, through many projects and collaborating with many people, I know how to structure the file organisation and keep it clean for other developers.
 
-what basic features I have implemented
+What basic features I have implemented
 
-what advanced features I have implemented
+What advanced features I have implemented
 
 MSSQL local database has been deployed on Azure
 Connection string has been secured and hidden by secret manager tool for development purpose
