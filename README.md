@@ -20,8 +20,23 @@ One thing about your project you are very proud of
 - Regarding the technoligy wise, I am proud of my file structure. When I started frontend development 3 year's ago, I did not have a structure and did not know what it is. However, through many projects and collaborating with many people, I know how to structure the file organisation and keep it clean for other developers.
 
 What basic features I have implemented
+- Frontend
+  - Typescript is used as a main language
+  - Material UI is used for components
+  - UI was designed, visually straight forward and appealing.
+  - responsive css applied
+  - Next.js is used
+  - Git is used for regular project update
+
+- Backend
+  - Backend is built with ASP. NET version 8 C#
+  - EFCore used
+  - MSSQL used and deployed on Azure SQL
+  - CRUD operations functioned
+  - Git is used
 
 What advanced features I have implemented
-
-MSSQL local database has been deployed on Azure
-Connection string has been secured and hidden by secret manager tool for development purpose
+- Storybook is used for components testing
+- Redux is used for state management
+- Database deployed using Azure
+- Connection string has been secured and hidden by secret manager tool for security purpose
